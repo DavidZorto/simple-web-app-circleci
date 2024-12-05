@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Text Generator</title>
+</head>
+<body>
+    <h1>Dynamic Text Generator</h1>
+    <button id="generateTextButton">Click Me to Generate Text</button>
+    <p id="textContainer"></p> <!-- This element will be updated with new text each time -->
+
+    <script>
+        // Random text generator function
+        function makeid(length) {
+            let result = '';
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            const charactersLength = characters.length;
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+
+        // Event listener for button click
+        document.getElementById("generateTextButton").addEventListener("click", function() {
+            const newMessage = makeid(30);  // Generates a 30-character random string
+            // Update the existing text in the text container
+            document.getElementById("textContainer").textContent = newMessage;
+        });
+    </script>
+</body>
+</html>
